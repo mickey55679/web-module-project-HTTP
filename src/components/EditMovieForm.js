@@ -6,6 +6,9 @@ import axios from 'axios';
 
 const EditMovieForm = (props) => {
   const navigate = useNavigate();
+  const {id} = useParams(); //destructure what comes from useParams to get ID
+
+  // console.log('current id:',id);
 
   const { setMovies } = props;
   const [movie, setMovie] = useState({
