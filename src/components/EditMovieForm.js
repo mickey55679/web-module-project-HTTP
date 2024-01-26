@@ -19,19 +19,47 @@ const EditMovieForm = (props) => {
     description: ""
   });
 
-  const handleChange = (e) => {
-    setMovie({
-      ...movie,
-      [e.target.name]: e.target.value
-    });
-  }
+const handleChange = (e) => {
+  // console.log("Event:", e);
+  // console.log("Previous Movie State:", movie);
+  setMovie({
+    ...movie,
+    [e.target.name]: e.target.value,
+  });
+};
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('clicked')
     // Make your put request here
     // On success, set the updated movies in state
     // and also navigate the app to the updated movie path
+    axios.put(`http://localhost:9000/api/movies/${id}`, movie)
+    .then(res => {
+      console.log(res.data)
+      setMovies(res.data)
+      navigate(`/movies/${id}`)
+    }).catch(err => {
+      console.log(err.response)
+    })
   }
+useEffect(() => {
+  // console.log("Fetching movie for ID:", id); // Check if useEffect is triggered and ID value
+  axios
+    .get(`http://localhost:9000/api/movies/${id}`)
+    .then((res) => {
+
+      setMovie(res.data);
+    })
+    .catch((err) => {
+      console.log(err.response);
+    });
+}, [id]);
+
+
+
+
 
   const { title, director, genre, metascore, description } = movie;
 

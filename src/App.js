@@ -48,9 +48,9 @@ const App = (props) => {
           <FavoriteMovieList favoriteMovies={favoriteMovies} />
 
           <Routes>
-            <Route path="movies/edit/:id" element={<EditMovieForm />} />
+            <Route path="movies/edit/:id" element={<EditMovieForm setMovies={setMovies}/>} />
 
-            <Route path="movies/:id" />
+            <Route path="movies/:id" element={<Movie />} />
 
             <Route path="movies" element={<MovieList movies={movies} />} />
 
