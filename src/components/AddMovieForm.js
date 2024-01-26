@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 import axios from "axios";
@@ -42,7 +42,7 @@ const AddMovieForm = (props) => {
         <form onSubmit={handleSubmit}>
           <div className="modal-header">
             <h4 className="modal-title">
-              Adding <strong>{movie.title}</strong>
+              Add A New Movie <strong>{movie.title}</strong>
             </h4>
           </div>
           <div className="modal-body">
