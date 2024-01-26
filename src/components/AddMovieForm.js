@@ -28,7 +28,13 @@ const AddMovieForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("clicked");
+    console.log('movie:', movie);
+    axios.post("http://localhost:9000/api/movies", movie)
+    .then(res => {
+        console.log(res);
+        setMovies(res.data)
+        navigate('/movies')
+    })
   
    
   };
@@ -42,7 +48,7 @@ const AddMovieForm = (props) => {
         <form onSubmit={handleSubmit}>
           <div className="modal-header">
             <h4 className="modal-title">
-              Add A New Movie <strong>{movie.title}</strong>
+              Adding.. <strong>{movie.title}</strong>
             </h4>
           </div>
           <div className="modal-body">
